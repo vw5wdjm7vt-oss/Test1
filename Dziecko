@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌟 Test PRISM dla dziecka</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
+    .info-box {
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+    }
+    .question-card {
+      background: #fafafa;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 2px solid #e0e0e0;
+    }
+    .question-number {
+      color: #667eea;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .question-text {
+      font-size: 1.15rem;
+      color: #333;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+    }
+    .option:hover {
+      border-color: #667eea;
+      background: #f5f5ff;
+    }
+    .option.selected {
+      border-color: #667eea;
+      background: #e8eaff;
+    }
+    .option input {
+      margin-right: 12px;
+      width: 20px;
+      height: 20px;
+    }
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-prev {
+      background: #e0e0e0;
+      color: #555;
+    }
+    .btn-next {
+      background: #667eea;
+      color: white;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #e0e0e0;
+      border-radius: 6px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 6px;
+      transition: width 0.3s;
+    }
+    .progress-text {
+      text-align: center;
+      margin-top: 8px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .hidden { display: none; }
+    
+    .result-section {
+      text-align: center;
+      padding: 20px;
+    }
+    .result-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px 0;
+      text-align: left;
+      border-left: 5px solid;
+    }
+    .result-card.green { border-left-color: #4caf50; }
+    .result-card.red { border-left-color: #f44336; }
+    .result-card.blue { border-left-color: #2196f3; }
+    .result-card.gold { border-left-color: #ffc107; }
+    
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .result-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .result-score {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .bar-container {
+      background: #e0e0e0;
+      border-radius: 5px;
+      height: 10px;
+      margin: 10px 0;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 5px;
+      transition: width 1s;
+    }
+    .bar-fill.green { background: #4caf50; }
+    .bar-fill.red { background: #f44336; }
+    .bar-fill.blue { background: #2196f3; }
+    .bar-fill.gold { background: #ffc107; }
+    
+    .result-description {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 8px;
+    }
+    .career-tips {
+      background: #f0f4ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 25px;
+      text-align: left;
+    }
+    .career-tips h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .career-tips ul {
+      line-height: 1.8;
+      color: #555;
+    }
+    .restart-btn {
+      background: #667eea;
+      color: white;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="start-screen">
+      <h1>🌟 Test PRISM dla dziecka</h1>
+      <p class="subtitle">Odkryj swoje mocne strony i zainteresowania!</p>
+      
+      <div class="info-box">
+        <h3>📋 Instrukcja:</h3>
+        <p>To jest test z 48 pytaniami. Przy każdym zdaniu wybierz liczbę:</p>
+        <p><strong>1</strong> – wcale do mnie nie pasuje<br>
+           <strong>2</strong> – trochę do mnie pasuje<br>
+           <strong>3</strong> – bardzo do mnie pasuje</p>
+        <p>Odpowiadaj szczerze, tak jak jesteś na co dzień!</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <button class="btn btn-next" onclick="startQuiz()">Rozpocznij test 🚀</button>
+      </div>
+    </div>
+
+    <div id="quiz-screen" class="hidden">
+      <div class="question-card">
+        <div class="question-number" id="question-number">Pytanie 1 z 48</div>
+        <div class="question-text" id="question-text"></div>
+        <div class="options" id="options"></div>
+      </div>
+      
+      <div class="navigation">
+        <button class="btn btn-prev" id="prevBtn" onclick="previousQuestion()">← Wstecz</button>
+        <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Dalej →</button>
+      </div>
+      
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">Ukończono: 0%</div>
+    </div>
+
+    <div id="result-screen" class="hidden">
+      <div class="result-section">
+        <h1>🎉 Twoje wyniki!</h1>
+        <p>Oto Twój profil preferencji zachowań:</p>
+        
+        <div class="result-card green">
+          <div class="result-header">
+            <span class="result-title">💚 ZIELONY - Relacje i pomaganie</span>
+            <span class="result-score" id="score-green">0/27</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar-fill green" id="bar-green" style="width:0%"></div>
+          </div>
+          <div class="result-description">Empatia, współpraca, dbałość o innych. Lubisz pomagać i być z ludźmi.</div>
+        </div>
+
+        <div class="result-card red">
+          <div class="result-header">
+            <span class="result-title">❤️ CZERWONY - Działanie i przywództwo</span>
+            <span class="result-score" id="score-red">0/33</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar-fill red" id="bar-red" style="width:0%"></div>
+          </div>
+          <div class="result-description">Energia, decyzyjność, rywalizacja. Lubisz działać, wygrywać i prowadzić.</div>
+        </div>
+
+        <div class="result-card blue">
+          <div class="result-header">
+            <span class="result-title">💙 NIEBIESKI - Porządek i dokładność</span>
+            <span class="result-score" id="score-blue">0/27</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar-fill blue" id="bar-blue" style="width:0%"></div>
+          </div>
+          <div class="result-description">Struktura, zasady, precyzja. Lubisz, gdy wszystko jest poukładane.</div>
+        </div>
+
+        <div class="result-card gold">
+          <div class="result-header">
+            <span class="result-title">💛 ZŁOTY - Pomysły i kreatywność</span>
+            <span class="result-score" id="score-gold">0/51</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar-fill gold" id="bar-gold" style="width:0%"></div>
+          </div>
+          <div class="result-description">Wyobraźnia, ciekawość, twórczość. Masz mnóstwo pomysłów i lubisz odkrywać.</div>
+        </div>
+
+        <div class="career-tips">
+          <h3>🎯 Co to oznacza dla Twojej przyszłości?</h3>
+          <p>Twoje najsilniejsze kolory pokazują, jakie aktywności sprawiają Ci najwięcej radości:</p>
+          <ul>
+            <li><strong>Zielony</strong> – rozważ: nauczyciel, lekarz, weterynarz, psycholog, praca z dziećmi</li>
+            <li><strong>Czerwony</strong> – myśl o: przedsiębiorca, menedżer, sportowiec, organizator, lider</li>
+            <li><strong>Niebieski</strong> – sprawdź: informatyk, księgowy, inżynier, architekt, specjalista jakości</li>
+            <li><strong>Złoty</strong> – rozwijaj się jako: artysta, projektant, naukowiec, wynalazca, pisarz, muzyk</li>
+          </ul>
+          <p style="font-size: 0.9rem; color: #666; margin-top: 15px;">
+            <em>To nie jest wyrok na całe życie! To wskazówka, co teraz najbardziej Cię kręci.</em>
+          </p>
+        </div>
+        
+        <button class="btn restart-btn" onclick="restartQuiz()">🔄 Rozpocznij od nowa</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { text: "Lubię pomagać innym dzieciom, kiedy czegoś nie umieją.", color: "green" },
+      { text: "Często wymyślam własne zabawy albo gry.", color: "gold" },
+      { text: "Lubię, gdy wszystko jest poukładane na swoim miejscu.", color: "blue" },
+      { text: "Chętnie opowiadam innym, co mają robić w zabawie lub projekcie.", color: "red" },
+      { text: "Interesuje mnie, jak działają różne urządzenia (np. rower, komputer, konsola).", color: "gold" },
+      { text: "Lubię opowiadać historie lub wymyślać bajki.", color: "gold" },
+      { text: "Wolę spędzać czas z innymi niż sam/sama.", color: "green" },
+      { text: "Lubię kończyć zadania, nawet jeśli są trudne.", color: "red" },
+      { text: "Zwracam uwagę na szczegóły (np. błędy w zeszycie, brakujące elementy).", color: "blue" },
+      { text: "Lubię rozmawiać z nowymi osobami i łatwo je poznaję.", color: "red" },
+      { text: "Interesuje mnie przyroda (zwierzęta, rośliny, pogoda).
