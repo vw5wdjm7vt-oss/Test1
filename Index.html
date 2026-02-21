@@ -131,7 +131,7 @@
       font-size: 0.9rem;
     }
     .hidden { display: none; }
-    
+
     .result-section {
       text-align: center;
       padding: 20px;
@@ -148,7 +148,7 @@
     .result-card.red { border-left-color: #f44336; }
     .result-card.blue { border-left-color: #2196f3; }
     .result-card.gold { border-left-color: #ffc107; }
-    
+
     .result-header {
       display: flex;
       justify-content: space-between;
@@ -178,7 +178,7 @@
     .bar-fill.red { background: #f44336; }
     .bar-fill.blue { background: #2196f3; }
     .bar-fill.gold { background: #ffc107; }
-    
+
     .result-description {
       font-size: 0.9rem;
       color: #555;
@@ -213,7 +213,7 @@
     <div id="start-screen">
       <h1>🌟 Test PRISM dla dziecka</h1>
       <p class="subtitle">Odkryj swoje mocne strony i zainteresowania!</p>
-      
+
       <div class="info-box">
         <h3>📋 Instrukcja:</h3>
         <p>To jest test z 48 pytaniami. Przy każdym zdaniu wybierz liczbę:</p>
@@ -222,7 +222,7 @@
            <strong>3</strong> – bardzo do mnie pasuje</p>
         <p>Odpowiadaj szczerze, tak jak jesteś na co dzień!</p>
       </div>
-      
+
       <div style="text-align: center;">
         <button class="btn btn-next" onclick="startQuiz()">Rozpocznij test 🚀</button>
       </div>
@@ -234,12 +234,12 @@
         <div class="question-text" id="question-text"></div>
         <div class="options" id="options"></div>
       </div>
-      
+
       <div class="navigation">
         <button class="btn btn-prev" id="prevBtn" onclick="previousQuestion()">← Wstecz</button>
         <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Dalej →</button>
       </div>
-      
+
       <div class="progress-bar">
         <div class="progress-fill" id="progressFill"></div>
       </div>
@@ -250,11 +250,11 @@
       <div class="result-section">
         <h1>🎉 Twoje wyniki!</h1>
         <p>Oto Twój profil preferencji zachowań:</p>
-        
+
         <div class="result-card green">
           <div class="result-header">
             <span class="result-title">💚 ZIELONY - Relacje i pomaganie</span>
-            <span class="result-score" id="score-green">0/27</span>
+            <span class="result-score" id="score-green">0/36</span>
           </div>
           <div class="bar-container">
             <div class="bar-fill green" id="bar-green" style="width:0%"></div>
@@ -265,7 +265,7 @@
         <div class="result-card red">
           <div class="result-header">
             <span class="result-title">❤️ CZERWONY - Działanie i przywództwo</span>
-            <span class="result-score" id="score-red">0/33</span>
+            <span class="result-score" id="score-red">0/36</span>
           </div>
           <div class="bar-container">
             <div class="bar-fill red" id="bar-red" style="width:0%"></div>
@@ -276,7 +276,7 @@
         <div class="result-card blue">
           <div class="result-header">
             <span class="result-title">💙 NIEBIESKI - Porządek i dokładność</span>
-            <span class="result-score" id="score-blue">0/27</span>
+            <span class="result-score" id="score-blue">0/36</span>
           </div>
           <div class="bar-container">
             <div class="bar-fill blue" id="bar-blue" style="width:0%"></div>
@@ -287,7 +287,7 @@
         <div class="result-card gold">
           <div class="result-header">
             <span class="result-title">💛 ZŁOTY - Pomysły i kreatywność</span>
-            <span class="result-score" id="score-gold">0/51</span>
+            <span class="result-score" id="score-gold">0/36</span>
           </div>
           <div class="bar-container">
             <div class="bar-fill gold" id="bar-gold" style="width:0%"></div>
@@ -308,7 +308,7 @@
             <em>To nie jest wyrok na całe życie! To wskazówka, co teraz najbardziej Cię kręci.</em>
           </p>
         </div>
-        
+
         <button class="btn restart-btn" onclick="restartQuiz()">🔄 Rozpocznij od nowa</button>
       </div>
     </div>
@@ -326,4 +326,167 @@
       { text: "Lubię kończyć zadania, nawet jeśli są trudne.", color: "red" },
       { text: "Zwracam uwagę na szczegóły (np. błędy w zeszycie, brakujące elementy).", color: "blue" },
       { text: "Lubię rozmawiać z nowymi osobami i łatwo je poznaję.", color: "red" },
-      { text: "Interesuje mnie przyroda (zwierzęta, rośliny, pogoda).
+      { text: "Interesuje mnie przyroda (zwierzęta, rośliny, pogoda).", color: "green" },
+      { text: "Chętnie pomagam, gdy ktoś jest smutny lub potrzebuje wsparcia.", color: "green" },
+      { text: "Lubię rywalizować i sprawdzać, kto jest lepszy.", color: "red" },
+      { text: "Lubię, gdy zasady są jasne i wszyscy ich przestrzegają.", color: "blue" },
+      { text: "Lubię malować, rysować lub tworzyć różne rzeczy.", color: "gold" },
+      { text: "Chętnie biorę na siebie odpowiedzialność za grupę.", color: "red" },
+      { text: "Martwię się, gdy praca jest wykonana niedbale lub niezgodnie z planem.", color: "blue" },
+      { text: "Lubię, gdy w grupie jest miła atmosfera i wszyscy się dobrze czują.", color: "green" },
+      { text: "Lubię budować i konstruować różne rzeczy (z klocków, drewna, recyklingu).", color: "gold" },
+      { text: "Staram się dotrzymywać obietnic i zawsze robić to, co powiem.", color: "blue" },
+      { text: "Lubię działać szybko i zdecydowanie.", color: "red" },
+      { text: "Interesują mnie inne kultury, języki i zwyczaje.", color: "green" },
+      { text: "Lubię rozwiązywać zagadki, łamigłówki i zadania logiczne.", color: "gold" },
+      { text: "Wolę mieć plan niż działać bez przygotowania.", color: "blue" },
+      { text: "Lubię być w centrum uwagi.", color: "red" },
+      { text: "Chętnie słucham, gdy ktoś potrzebuje się wygadać.", color: "green" },
+      { text: "Lubię eksperymentować i próbować nowych rozwiązań.", color: "gold" },
+      { text: "Pilnuję, żeby moje zadania były wykonane dokładnie i bez błędów.", color: "blue" },
+      { text: "Lubię sport i aktywność fizyczną.", color: "red" },
+      { text: "Łatwo wyczuwam, kiedy ktoś jest smutny lub niezadowolony.", color: "green" },
+      { text: "Lubię wymyślać nowe projekty i wciągać w nie innych.", color: "gold" },
+      { text: "Lubię, gdy moje rzeczy są zawsze w tym samym miejscu.", color: "blue" },
+      { text: "Lubię podejmować decyzje i nie lubię, gdy ktoś za mnie decyduje.", color: "red" },
+      { text: "Ważne jest dla mnie, żeby nikt w grupie nie był wykluczony.", color: "green" },
+      { text: "Lubię czytać książki lub oglądać filmy o odkryciach i wynalazkach.", color: "gold" },
+      { text: "Sprawdzam swoją pracę kilka razy, żeby mieć pewność, że jest bezbłędna.", color: "blue" },
+      { text: "Lubię osiągać cele i widzieć efekty swojej pracy.", color: "red" },
+      { text: "Lubię pracować w grupie i razem rozwiązywać problemy.", color: "green" },
+      { text: "Lubię wymyślać nowe, nieoczywiste pomysły.", color: "gold" },
+      { text: "Denerwuje mnie, gdy rzeczy są zrobione niedokładnie lub niezgodnie z zasadami.", color: "blue" },
+      { text: "Lubię wygrywać i być najlepszy/najlepsza w tym, co robię.", color: "red" },
+      { text: "Staram się rozumieć, dlaczego inni czują się tak, a nie inaczej.", color: "green" },
+      { text: "Lubię muzykę, taniec lub teatr.", color: "gold" },
+      { text: "Lubię tworzyć listy, harmonogramy i plany działania.", color: "blue" },
+      { text: "Chętnie biorę udział w zawodach i turniejach.", color: "red" },
+      { text: "Lubię dbać o innych i sprawiać, żeby czuli się dobrze.", color: "green" },
+      { text: "Lubię fantazjować i wyobrażać sobie inne światy lub możliwości.", color: "gold" },
+      { text: "Lubię, gdy w zajęciach jest jasna struktura i kolejność.", color: "blue" }
+    ];
+
+    let currentQuestion = 0;
+    let answers = [];
+
+    function startQuiz() {
+      document.getElementById('start-screen').classList.add('hidden');
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      currentQuestion = 0;
+      answers = new Array(questions.length).fill(0);
+      showQuestion(0);
+    }
+
+    function showQuestion(index) {
+      const q = questions[index];
+      document.getElementById('question-number').textContent =
+        'Pytanie ' + (index + 1) + ' z ' + questions.length;
+      document.getElementById('question-text').textContent = q.text;
+
+      const optionsDiv = document.getElementById('options');
+      optionsDiv.innerHTML = '';
+
+      const labels = [
+        '1 – wcale do mnie nie pasuje',
+        '2 – trochę do mnie pasuje',
+        '3 – bardzo do mnie pasuje'
+      ];
+
+      for (let i = 1; i <= 3; i++) {
+        const div = document.createElement('div');
+        div.className = 'option' + (answers[index] === i ? ' selected' : '');
+        (function(val, el) {
+          el.onclick = function() { selectOption(val, el); };
+        })(i, div);
+
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'option';
+        radio.value = i;
+        radio.checked = (answers[index] === i);
+
+        const span = document.createElement('span');
+        span.textContent = labels[i - 1];
+
+        div.appendChild(radio);
+        div.appendChild(span);
+        optionsDiv.appendChild(div);
+      }
+
+      document.getElementById('prevBtn').style.visibility =
+        (index === 0) ? 'hidden' : 'visible';
+      document.getElementById('nextBtn').textContent =
+        (index === questions.length - 1) ? 'Zakończ ✓' : 'Dalej →';
+
+      updateProgress();
+    }
+
+    function selectOption(value, clickedEl) {
+      answers[currentQuestion] = value;
+      document.querySelectorAll('#options .option').forEach(function(el) {
+        el.classList.remove('selected');
+      });
+      clickedEl.classList.add('selected');
+      document.querySelectorAll('#options input[type=radio]').forEach(function(r, i) {
+        r.checked = (i + 1 === value);
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const answered = answers.filter(function(a) { return a > 0; }).length;
+      const pct = Math.round((answered / questions.length) * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressText').textContent = 'Ukończono: ' + pct + '%';
+    }
+
+    function nextQuestion() {
+      if (!answers[currentQuestion]) {
+        alert('Proszę wybrać odpowiedź przed przejściem dalej!');
+        return;
+      }
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      } else {
+        showResults();
+      }
+    }
+
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quiz-screen').classList.add('hidden');
+      document.getElementById('result-screen').classList.remove('hidden');
+
+      var scores = { green: 0, red: 0, blue: 0, gold: 0 };
+      var maxScores = { green: 0, red: 0, blue: 0, gold: 0 };
+
+      questions.forEach(function(q, i) {
+        scores[q.color] += answers[i];
+        maxScores[q.color] += 3;
+      });
+
+      ['green', 'red', 'blue', 'gold'].forEach(function(color) {
+        var s = scores[color];
+        var m = maxScores[color];
+        document.getElementById('score-' + color).textContent = s + '/' + m;
+        document.getElementById('bar-' + color).style.width =
+          Math.round((s / m) * 100) + '%';
+      });
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      answers = new Array(questions.length).fill(0);
+      document.getElementById('result-screen').classList.add('hidden');
+      document.getElementById('start-screen').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
