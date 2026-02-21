@@ -7,10 +7,12 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: -webkit-linear-gradient(315deg, #667eea 0%, #764ba2 100%);
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       margin: 0;
       padding: 20px;
       min-height: 100vh;
+      min-height: -webkit-fill-available;
     }
     .container {
       max-width: 800px;
@@ -56,19 +58,35 @@
       line-height: 1.4;
     }
     .options {
+      display: -webkit-box;
+      display: -webkit-flex;
       display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
       flex-direction: column;
-      gap: 10px;
     }
     .option {
       background: white;
       border: 2px solid #e0e0e0;
       border-radius: 8px;
       padding: 15px;
+      margin-bottom: 10px;
       cursor: pointer;
+      -webkit-transition: all 0.3s;
       transition: all 0.3s;
+      display: -webkit-box;
+      display: -webkit-flex;
       display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
       align-items: center;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .option:last-child {
+      margin-bottom: 0;
     }
     .option:hover {
       border-color: #667eea;
@@ -82,6 +100,10 @@
       margin-right: 12px;
       width: 20px;
       height: 20px;
+      pointer-events: none;
+      -webkit-pointer-events: none;
+      flex-shrink: 0;
+      -webkit-flex-shrink: 0;
     }
     .btn {
       padding: 12px 30px;
@@ -90,7 +112,10 @@
       cursor: pointer;
       font-size: 1rem;
       font-weight: 600;
+      -webkit-transition: all 0.3s;
       transition: all 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
     }
     .btn-prev {
       background: #e0e0e0;
@@ -101,13 +126,17 @@
       color: white;
     }
     .btn:hover {
+      -webkit-transform: translateY(-2px);
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .navigation {
+      display: -webkit-box;
+      display: -webkit-flex;
       display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
       justify-content: space-between;
-      gap: 15px;
       margin-top: 25px;
     }
     .progress-bar {
@@ -120,8 +149,10 @@
     }
     .progress-fill {
       height: 100%;
+      background: -webkit-linear-gradient(left, #667eea, #764ba2);
       background: linear-gradient(90deg, #667eea, #764ba2);
       border-radius: 6px;
+      -webkit-transition: width 0.3s;
       transition: width 0.3s;
     }
     .progress-text {
@@ -150,8 +181,14 @@
     .result-card.gold { border-left-color: #ffc107; }
 
     .result-header {
+      display: -webkit-box;
+      display: -webkit-flex;
       display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
       justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
       align-items: center;
       margin-bottom: 10px;
     }
@@ -172,6 +209,7 @@
     .bar-fill {
       height: 100%;
       border-radius: 5px;
+      -webkit-transition: width 1s;
       transition: width 1s;
     }
     .bar-fill.green { background: #4caf50; }
@@ -423,13 +461,15 @@
 
     function selectOption(value, clickedEl) {
       answers[currentQuestion] = value;
-      document.querySelectorAll('#options .option').forEach(function(el) {
-        el.classList.remove('selected');
-      });
+      var options = Array.from(document.querySelectorAll('#options .option'));
+      for (var o = 0; o < options.length; o++) {
+        options[o].classList.remove('selected');
+      }
       clickedEl.classList.add('selected');
-      document.querySelectorAll('#options input[type=radio]').forEach(function(r, i) {
-        r.checked = (i + 1 === value);
-      });
+      var radios = Array.from(document.querySelectorAll('#options input[type=radio]'));
+      for (var r = 0; r < radios.length; r++) {
+        radios[r].checked = (r + 1 === value);
+      }
       updateProgress();
     }
 
