@@ -264,7 +264,7 @@
       </div>
 
       <div style="text-align: center;">
-        <button class="btn btn-next" onclick="startQuiz()">Rozpocznij test 🚀</button>
+        <button class="btn btn-next" id="startBtn">Rozpocznij test 🚀</button>
       </div>
     </div>
 
@@ -276,8 +276,8 @@
       </div>
 
       <div class="navigation">
-        <button class="btn btn-prev" id="prevBtn" onclick="previousQuestion()">← Wstecz</button>
-        <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Dalej →</button>
+        <button class="btn btn-prev" id="prevBtn">← Wstecz</button>
+        <button class="btn btn-next" id="nextBtn">Dalej →</button>
       </div>
 
       <div class="progress-bar">
@@ -349,7 +349,7 @@
           </p>
         </div>
 
-        <button class="btn restart-btn" onclick="restartQuiz()">🔄 Rozpocznij od nowa</button>
+        <button class="btn restart-btn" id="restartBtn">🔄 Rozpocznij od nowa</button>
       </div>
     </div>
   </div>
@@ -543,6 +543,13 @@
       document.getElementById('result-screen').classList.add('hidden');
       document.getElementById('start-screen').classList.remove('hidden');
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('startBtn').addEventListener('click', startQuiz);
+      document.getElementById('prevBtn').addEventListener('click', previousQuestion);
+      document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+      document.getElementById('restartBtn').addEventListener('click', restartQuiz);
+    });
   </script>
 </body>
 </html>
