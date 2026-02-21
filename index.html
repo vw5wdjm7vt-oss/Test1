@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>🌟 Test PRISM dla dziecka</title>
   <style>
     body {
@@ -84,6 +84,7 @@
       -webkit-tap-highlight-color: transparent;
       -webkit-user-select: none;
       user-select: none;
+      touch-action: manipulation;
     }
     .option:last-child {
       margin-bottom: 0;
@@ -116,6 +117,7 @@
       transition: all 0.3s;
       -webkit-appearance: none;
       appearance: none;
+      touch-action: manipulation;
     }
     .btn-prev {
       background: #e0e0e0;
@@ -433,9 +435,7 @@
       for (let i = 1; i <= 3; i++) {
         const div = document.createElement('div');
         div.className = 'option' + (answers[index] === i ? ' selected' : '');
-        (function(val, el) {
-          el.onclick = function() { selectOption(val, el); };
-        })(i, div);
+        div.setAttribute('data-value', i);
 
         const radio = document.createElement('input');
         radio.type = 'radio';
@@ -450,6 +450,22 @@
         div.appendChild(span);
         optionsDiv.appendChild(div);
       }
+
+      // Attach events after all options are in the DOM
+      var optionEls = Array.from(optionsDiv.querySelectorAll('.option'));
+      optionEls.forEach(function(el) {
+        var val = parseInt(el.getAttribute('data-value'), 10);
+        var tapped = false;
+        el.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          tapped = true;
+          selectOption(val, el);
+        });
+        el.addEventListener('click', function() {
+          if (!tapped) { selectOption(val, el); }
+          tapped = false;
+        });
+      });
 
       document.getElementById('prevBtn').style.visibility =
         (index === 0) ? 'hidden' : 'visible';
